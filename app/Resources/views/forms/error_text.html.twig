@@ -1,0 +1,11 @@
+{% block _genus_form_name_row -%}
+    {%- set icon = 'has-feedback' -%}
+    <div class="form-group{% if (not compound or force_error|default(false)) and not valid %} has-error {{ icon }}{% endif %}">
+        {{- form_label(form) -}}
+        {{- form_widget(form) -}}
+        {% if (not compound or force_error|default(false)) and not valid %}
+            <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        {% endif %}
+        {{- form_errors(form) -}}
+    </div>
+{%- endblock _genus_form_name_row %}
