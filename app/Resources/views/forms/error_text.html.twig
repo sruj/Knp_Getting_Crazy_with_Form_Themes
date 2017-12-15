@@ -7,6 +7,9 @@
         {{- form_widget(form) -}}
         {{- form_errors(form) -}}
     </div>
+    {% if help is defined %}
+        <span id="helpBlock" class="help-block">{{help}}</span>
+    {% endif %}
 {%- endblock form_row %}
 
 

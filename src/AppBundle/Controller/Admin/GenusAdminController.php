@@ -54,7 +54,8 @@ class GenusAdminController extends Controller
         }
 
         return $this->render('admin/genus/new.html.twig', [
-            'genusForm' => $form->createView()
+            'genusForm' => $form->createView(),
+            'help'=>'Please choose a date.'
         ]);
     }
 
