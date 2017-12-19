@@ -4,7 +4,11 @@
     {%- set icon = 'has-feedback' -%}
     <div class="form-group{% if (not compound or force_error|default(false)) and not valid %} has-error {{ icon }}{% endif %}">
         {{- form_label(form) -}}
-        {{- form_widget(form) -}}
+        {#{{- form_widget(form) -}}#}
+        {% if help is defined %}
+            {%- set attr = attr|merge({'aria-describedby':'helpBlock'}) -%}
+        {% endif %}
+        {{- form_widget(form,{'attr': attr }) -}}
         {{- form_errors(form) -}}
     </div>
     {% if help is defined %}
@@ -22,3 +26,11 @@
         <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
     {% endif %}
 {%- endblock form_widget_simple %}
+
+
+{#{% block choice_widget_collapsed -%}#}
+    {#{% if help is defined %}#}
+        {#{%- set attr = attr|merge({'aria-describedby':'helpBlock'}) -%}#}
+    {#{% endif %}#}
+    {#{{- parent() -}}#}
+{#{%- endblock choice_widget_collapsed %}#}
